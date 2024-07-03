@@ -63,6 +63,18 @@ app.get("/api/invoice-details", async (req, res) => {
   }
 });
 
+app.delete('/api/delete-transactions', async (req, res) => {
+    try {
+      const result = await TransactionModel.deleteMany({});
+      res.status(200).json({
+        message: 'All transactions deleted successfully',
+        deletedCount: result.deletedCount
+      });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
