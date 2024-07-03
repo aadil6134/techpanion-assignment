@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   res.send("Server is running successfully");
 });
 
-app.post("/api/transactions", async (req, res) => {
+app.post("/api/submit-form", async (req, res) => {
   try {
     const transactionData = req.body;
 
